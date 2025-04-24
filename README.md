@@ -2,7 +2,7 @@
 
 A collection of competitive battle cards for Excalibur SAM, designed to help sales teams effectively position against competitors.
 
-> **Note:** These battle cards are designed for sales teams to use when discussing Excalibur SAM's competitive advantages. They highlight key differentiators in a clear, visually appealing format.
+<!-- > **Note:** These battle cards are designed for sales teams to use when discussing Excalibur SAM's competitive advantages. They highlight key differentiators in a clear, visually appealing format. -->
 
 ## Available Battle Cards
 

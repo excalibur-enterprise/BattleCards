@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        body {
+            background-color: #111;
+            padding: 20px;
+        }
+        .slide-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        .slide {
+            width: 1200px;
+            height: 675px; /* 16:9 aspect ratio */
+            margin: 0 auto;
+            background: #191c2a;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background: linear-gradient(90deg, #1a2c54, #2a3f77);
+            padding: 20px 25px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            height: 80px;
+        }
+        .header::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 180px;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="90" cy="40" r="40" fill="%23f73f93" opacity="0.3"/></svg>');
+            background-repeat: no-repeat;
+            background-position: center right;
+        }
+        .rocket {
+            font-size: 30px;
+            margin-right: 15px;
+        }
+        .title {
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .content {
+            flex: 1;
+            display: flex;
+            padding: 20px;
+        }
+        .comparison {
+            display: flex;
+            flex: 1;
+        }
+        .column {
+            flex: 1;
+            padding: 15px;
+        }
+        .excalibur-column {
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .column-header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 22px;
+            font-weight: 600;
+        }
+        .excalibur-header {
+            color: #3498db;
+        }
+        .wallix-header {
+            color: #f73f93;
+        }
+        .feature-box {
+            background: rgba(30, 39, 70, 0.6);
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 3px solid transparent;
+            display: flex;
+            align-items: center;
+        }
+        .excalibur-feature {
+            border-left-color: #3498db;
+        }
+        .wallix-feature {
+            border-left-color: #f73f93;
+        }
+        .feature-icon {
+            margin-right: 15px;
+            flex-shrink: 0;
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+        .check-icon {
+            color: #2ecc71;
+        }
+        .warning-icon {
+            color: #f39c12;
+        }
+        .cross-icon {
+            color: #e74c3c;
+        }
+        .feature-content {
+            flex: 1;
+        }
+        .feature-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 6px;
+        }
+        .feature-key {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .table-section {
+            background: rgba(20, 25, 45, 0.7);
+            padding: 15px 20px;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .comparison-table th {
+            text-align: left;
+            padding: 10px;
+            background: rgba(26, 44, 84, 0.7);
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .comparison-table td {
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+        }
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        .advantage {
+            color: #2ecc71;
+            font-weight: 600;
+        }
+        .footer {
+            padding: 15px 20px;
+            display: flex;
+        }
+        .footer-box {
+            flex: 1;
+            background: rgba(30, 39, 70, 0.6);
+            border-radius: 5px;
+            padding: 15px;
+            margin: 0 10px;
+        }
+        .footer-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #3498db;
+            text-align: center;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .key-points {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .key-point {
+            flex-basis: 50%;
+            padding: 5px 5px 5px 15px;
+            position: relative;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+        }
+        .key-point:before {
+            content: '•';
+            position: absolute;
+            left: 5px;
+            color: #3498db;
+        }
+        .key-highlight {
+            color: #3498db;
+            font-weight: 600;
+        }
+
+        /* Slide 2 specific */
+        .objection-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 15px;
+            margin-bottom: 20px;
+        }
+        .objection-box {
+            background: rgba(30, 39, 70, 0.6);
+            border-radius: 5px;
+            padding: 12px;
+            border-left: 3px solid #3498db;
+        }
+        .objection-heading {
+            font-weight: 600;
+            color: white;
+            margin-bottom: 5px;
+        }
+        .objection-response {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+        }
+        .qualifying-section {
+            background: rgba(30, 39, 70, 0.6);
+            border-radius: 5px;
+            padding: 15px;
+            margin: 0 15px 20px 15px;
+        }
+        .qualifying-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 10px;
+        }
+        .qualifying-item {
+            padding-left: 15px;
+            position: relative;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+        }
+        .qualifying-item:before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #3498db;
+        }
+        .positioning-box {
+            background: rgba(30, 39, 70, 0.6);
+            border-radius: 5px;
+            padding: 15px;
+            margin: 0 15px;
+            text-align: center;
+        }
+        .positioning-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+            <div class="header">
+                <div class="rocket">🚀</div>
+                <div class="title">EXCALIBUR SAM vs. WALLIX</div>
+            </div>
+
+            <div class="content">
+                <div class="comparison">
+                    <div class="column excalibur-column">
+                        <div class="column-header excalibur-header">Excalibur SAM</div>
+
+                        <div class="feature-box excalibur-feature">
+                            <div class="feature-icon check-icon">✓</div>
+                            <div class="feature-content">
+                                <div class="feature-title">TRUE ZERO-TRUST ISOLATION</div>
+                                <div class="feature-key">Visual streaming → complete air gap</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-box excalibur-feature">
+                            <div class="feature-icon check-icon">✓</div>
+                            <div class="feature-content">
+                                <div class="feature-title">PASSWORDLESS AUTHENTICATION</div>
+                                <div class="feature-key">Built-in biometric MFA + Passkeys</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-box excalibur-feature">
+                            <div class="feature-icon check-icon">✓</div>
+                            <div class="feature-content">
+                                <div class="feature-title">BI-DIRECTIONAL PROTECTION</div>
+                                <div class="feature-key">RBI-WAF shields users & web apps</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-box excalibur-feature">
+                            <div class="feature-icon check-icon">✓</div>
+                            <div class="feature-content">
+                                <div class="feature-title">CRYPTOGRAPHICALLY SIGNED AUDITS</div>
+                                <div class="feature-key">Tamper-proof identity verification</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-box excalibur-feature">
+                            <div class="feature-icon check-icon">✓</div>
+                            <div class="feature-content">
+                                <div class="feature-title">AGENTLESS SIMPLICITY</div>
+                                <div class="feature-key">Standard HTML5 browsers only</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column wallix-column">
+                        <div class="column-header wallix-header">WALLIX</div>
+
+                        <div class="feature-box wallix-feature">
+                            <div class="feature-icon warning-icon">⚠</div>
+                            <div class="feature-content">
+                                <div class="feature-title">PROXY-BASED CONNECTION</div>
+                                <div class="feature-key">Direct endpoint-resource interaction</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-box wallix-feature">
+                            <div class="feature-icon warning-icon">⚠</div>
+                            <div class="feature-content">
+                                <div class="feature-title">TRADITIONAL AUTHENTICATION</div>
+                                <div class="feature-key">External MFA + password vaulting</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-box wallix-feature">
+                            <div class="feature-icon cross-icon">✗</div>
+                            <div class="feature-content">
+                                <div class="feature-title">NO USER-SIDE PROTECTION</div>
+                                <div class="feature-key">No inherent RBI-WAF capability</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-box wallix-feature">
+                            <div class="feature-icon warning-icon">⚠</div>
+                            <div class="feature-content">
+                                <div class="feature-title">STANDARD AUDIT LOGGING</div>
+                                <div class="feature-key">No cryptographic non-repudiation</div>
+                            </div>
+                        </div>
+
+                        <div class="feature-box wallix-feature">
+                            <div class="feature-icon warning-icon">⚠</div>
+                            <div class="feature-content">
+                                <div class="feature-title">REQUIRES PLUGINS FOR FEATURES</div>
+                                <div class="feature-key">Endpoint agents for advanced functions</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-section">
+                <table class="comparison-table">
+                    <tr>
+                        <th width="15%">Feature</th>
+                        <th width="30%">Excalibur SAM</th>
+                        <th width="30%">WALLIX</th>
+                        <th width="25%">Why We Win</th>
+                    </tr>
+                    <tr>
+                        <td>Isolation</td>
+                        <td>✅ Visual streaming air gap</td>
+                        <td>⚠️ Proxy-based gateway</td>
+                        <td class="advantage">True zero-trust isolation</td>
+                    </tr>
+                    <tr>
+                        <td>Endpoint Risk</td>
+                        <td>✅ Complete isolation</td>
+                        <td>⚠️ Risks remain</td>
+                        <td class="advantage">Ransomware-proof</td>
+                    </tr>
+                    <tr>
+                        <td>Authentication</td>
+                        <td>✅ Built-in passwordless</td>
+                        <td>⚠️ External MFA</td>
+                        <td class="advantage">Future-ready</td>
+                    </tr>
+                    <tr>
+                        <td>Web Security</td>
+                        <td>✅ Bi-directional RBI-WAF</td>
+                        <td>❌ None</td>
+                        <td class="advantage">Complete protection</td>
+                    </tr>
+                    <tr>
+                        <td>Architecture</td>
+                        <td>✅ Cloud-native Kubernetes</td>
+                        <td>⚠️ Appliance-based</td>
+                        <td class="advantage">Better scaling</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="footer">
+                <div class="footer-box">
+                    <div class="footer-title">WHY EXCALIBUR WINS</div>
+                    <div class="key-points">
+                        <div class="key-point"><span class="key-highlight">True air gap</span> blocks ransomware</div>
+                        <div class="key-point"><span class="key-highlight">Passwordless</span> eliminates credential theft</div>
+                        <div class="key-point"><span class="key-highlight">RBI-WAF</span> dual-direction protection</div>
+                        <div class="key-point"><span class="key-highlight">Kubernetes</span> cloud-native scaling</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

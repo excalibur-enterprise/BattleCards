@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        body {
+            background-color: #f5f7fa;
+            padding: 20px;
+            color: #333;
+        }
+        .slide {
+            width: 1200px;
+            height: 675px; /* 16:9 aspect ratio */
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background: linear-gradient(to right, #1a5fb4, #3584e4);
+            padding: 20px 25px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            height: 80px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            color: #ffffff;
+        }
+        .header:before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 70%);
+            border-radius: 50%;
+            filter: blur(5px);
+        }
+        .rocket {
+            font-size: 30px;
+            margin-right: 15px;
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.2);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), inset 0 0 15px rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .title {
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        /* Slide 2 specific */
+        .objection-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 15px;
+            margin-bottom: 20px;
+        }
+        .objection-box {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 15px;
+            border-left: 4px solid #1a5fb4;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .objection-heading {
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .objection-response {
+            color: #444;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+        .qualifying-section {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin: 0 0 20px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .qualifying-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 14px;
+            color: #1a5fb4;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(26, 95, 180, 0.2);
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+        .qualifying-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 14px;
+        }
+        .qualifying-item {
+            padding-left: 15px;
+            position: relative;
+            color: #444;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+        .qualifying-item:before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #1a5fb4;
+            font-weight: bold;
+        }
+        .positioning-box {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 18px;
+            margin: 0;
+            text-align: center;
+            border-left: 2px solid #1a5fb4;
+            border-right: 2px solid #1a5fb4;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .positioning-text {
+            color: #333;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <div class="rocket">🚀</div>
+            <div class="title">EXCALIBUR SAM BATTLE GUIDE</div>
+        </div>
+        
+        <div style="padding: 25px; flex: 1; display: flex; flex-direction: column; background: #f8f9fa;">
+            <div style="margin-bottom: 18px; color: #1a5fb4; font-size: 22px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;">HANDLING OBJECTIONS</div>
+            
+            <div class="objection-grid">
+                <div class="objection-box">
+                    <div class="objection-heading">"WALLIX is established; Excalibur is newer"</div>
+                    <div class="objection-response">• Next-gen streaming tech verified by independent tests<br>• EU-backed innovation with proven deployments<br>• Protection WALLIX's architecture cannot match</div>
+                </div>
+                
+                <div class="objection-box">
+                    <div class="objection-heading">"Users prefer native RDP/SSH clients"</div>
+                    <div class="objection-response">• Browser streaming eliminates native client vulnerabilities<br>• Zero endpoint footprint, reduced attack surface<br>• Consistent experience across all platforms</div>
+                </div>
+                
+                <div class="objection-box">
+                    <div class="objection-heading">"Streaming might be slow/degrade quality"</div>
+                    <div class="objection-response">• VITRO & Guacamole optimization = lag-free experience<br>• Visually lossless proven in enterprise deployments<br>• Pilot demonstrations available</div>
+                </div>
+                
+                <div class="objection-box">
+                    <div class="objection-heading">"WALLIX has more granular features"</div>
+                    <div class="objection-response">• Excalibur prioritizes fundamental isolation & passwordless<br>• RBI-WAF protection WALLIX can't match<br>• Unified solution vs. separate product modules</div>
+                </div>
+            </div>
+            
+            <div class="qualifying-section">
+                <div class="qualifying-title">QUALIFYING QUESTIONS</div>
+                <div class="qualifying-grid">
+                    <div class="qualifying-item">How critical is true endpoint isolation?</div>
+                    <div class="qualifying-item">Exploring passwordless future?</div>
+                    <div class="qualifying-item">Need simplified access from multiple devices?</div>
+                    <div class="qualifying-item">Concerns about ransomware/endpoint threats?</div>
+                    <div class="qualifying-item">Current PAM solutions complex to manage?</div>
+                    <div class="qualifying-item">Web-based threats a priority?</div>
+                </div>
+            </div>
+            
+            <div class="positioning-box">
+                <div class="positioning-text">
+                    "WALLIX has a broad portfolio, but Excalibur delivers superior protection through innovative architecture - protecting against threats WALLIX wasn't designed to handle."
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

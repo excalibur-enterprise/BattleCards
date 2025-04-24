@@ -9,8 +9,9 @@
             font-family: 'Segoe UI', Arial, sans-serif;
         }
         body {
-            background-color: #111;
+            background-color: #0a0d1c;
             padding: 20px;
+            color: #fff;
         }
         .slide-container {
             display: flex;
@@ -21,21 +22,24 @@
             width: 1200px;
             height: 675px; /* 16:9 aspect ratio */
             margin: 0 auto;
-            background: #191c2a;
+            background: linear-gradient(135deg, #0c1225, #151933);
             border-radius: 6px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             flex-direction: column;
         }
         .header {
-            background: linear-gradient(90deg, #1a2c54, #2a3f77);
+            background: linear-gradient(135deg, #0c1225, #1a2142, #2a3152);
             padding: 20px 25px;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
             height: 80px;
+            border-bottom: 1px solid rgba(74, 158, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
         .header::after {
             content: "";
@@ -211,10 +215,10 @@
             margin-bottom: 20px;
         }
         .objection-box {
-            background: rgba(30, 39, 70, 0.6);
-            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
             padding: 15px;
-            border-left: 4px solid #3498db;
+            border-left: 4px solid #4a9eff;
         }
         .objection-heading {
             font-weight: 600;
@@ -228,8 +232,8 @@
             line-height: 1.5;
         }
         .qualifying-section {
-            background: rgba(30, 39, 70, 0.6);
-            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
             padding: 15px 20px;
             margin: 0 0 20px 0;
         }
@@ -237,8 +241,9 @@
             font-size: 18px;
             font-weight: 600;
             margin-bottom: 14px;
-            color: #3498db;
+            color: #4a9eff;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
         .qualifying-grid {
             display: grid;
@@ -256,15 +261,17 @@
             content: '•';
             position: absolute;
             left: 0;
-            color: #3498db;
+            color: #4a9eff;
             font-weight: bold;
         }
         .positioning-box {
-            background: rgba(30, 39, 70, 0.6);
-            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
             padding: 18px;
             margin: 0;
             text-align: center;
+            border-left: 2px solid #4a9eff;
+            border-right: 2px solid #4a9eff;
         }
         .positioning-text {
             color: rgba(255, 255, 255, 0.9);
@@ -315,12 +322,6 @@
                         <div class="qualifying-item">Concerns about ransomware/endpoint threats?</div>
                         <div class="qualifying-item">Current PAM solutions complex to manage?</div>
                         <div class="qualifying-item">Web-based threats a priority?</div>
-                    </div>
-                </div>
-
-                <div class="positioning-box">
-                    <div class="positioning-text">
-                        "WALLIX has a broad portfolio, but Excalibur delivers superior protection through innovative architecture - protecting against threats WALLIX wasn't designed to handle."
                     </div>
                 </div>
             </div>

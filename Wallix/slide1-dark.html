@@ -9,8 +9,9 @@
             font-family: 'Segoe UI', Arial, sans-serif;
         }
         body {
-            background-color: #111;
+            background-color: #0a0d1c;
             padding: 20px;
+            color: #fff;
         }
         .slide-container {
             display: flex;
@@ -21,21 +22,24 @@
             width: 1200px;
             height: 675px; /* 16:9 aspect ratio */
             margin: 0 auto;
-            background: #191c2a;
+            background: linear-gradient(135deg, #0c1225, #151933);
             border-radius: 6px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             flex-direction: column;
         }
         .header {
-            background: linear-gradient(90deg, #1a2c54, #2a3f77);
+            background: linear-gradient(135deg, #0c1225, #1a2142, #2a3152);
             padding: 20px 25px;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
             height: 80px;
+            border-bottom: 1px solid rgba(74, 158, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
         .header::after {
             content: "";
@@ -83,14 +87,14 @@
             font-weight: 600;
         }
         .excalibur-header {
-            color: #3498db;
+            color: #4a9eff;
         }
         .wallix-header {
-            color: #f73f93;
+            color: #e74c3c;
         }
         .feature-box {
-            background: rgba(30, 39, 70, 0.6);
-            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
             padding: 15px;
             margin-bottom: 15px;
             border-left: 3px solid transparent;
@@ -98,10 +102,20 @@
             align-items: center;
         }
         .excalibur-feature {
-            border-left-color: #3498db;
+            border-left-color: #4a9eff;
+        }
+        .excalibur-feature:hover {
+            transform: translateX(-5px);
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            background: rgba(74, 158, 255, 0.15);
         }
         .wallix-feature {
-            border-left-color: #f73f93;
+            border-left-color: #e74c3c;
+        }
+        .wallix-feature:hover {
+            transform: translateX(5px);
+            box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.2);
+            background: rgba(231, 76, 60, 0.15);
         }
         .feature-icon {
             margin-right: 15px;
@@ -133,23 +147,27 @@
             color: rgba(255, 255, 255, 0.8);
         }
         .table-section {
-            background: rgba(20, 25, 45, 0.7);
+            background: rgba(0, 0, 0, 0.2);
             padding: 15px 20px;
         }
         .comparison-table {
             width: 100%;
             border-collapse: collapse;
+            margin: 0;
         }
         .comparison-table th {
             text-align: left;
-            padding: 10px;
-            background: rgba(26, 44, 84, 0.7);
+            padding: 12px 15px;
+            background: rgba(0, 0, 0, 0.4);
             color: white;
             font-size: 14px;
             font-weight: 600;
         }
+        .comparison-table tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.03);
+        }
         .comparison-table td {
-            padding: 10px;
+            padding: 10px 15px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             color: rgba(255, 255, 255, 0.9);
             font-size: 14px;
@@ -158,17 +176,29 @@
             border-bottom: none;
         }
         .advantage {
-            color: #2ecc71;
+            color: #4a9eff;
             font-weight: 600;
         }
         .footer {
             padding: 15px 20px;
             display: flex;
+            background: linear-gradient(90deg, #0c1225, #151933);
+            position: relative;
+            overflow: hidden;
+        }
+        .footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
         }
         .footer-box {
             flex: 1;
-            background: rgba(30, 39, 70, 0.6);
-            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
             padding: 15px;
             margin: 0 10px;
         }
@@ -176,10 +206,12 @@
             font-size: 16px;
             font-weight: 600;
             margin-bottom: 10px;
-            color: #3498db;
+            color: #4a9eff;
             text-align: center;
             padding-bottom: 8px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         .key-points {
             display: flex;
@@ -196,10 +228,11 @@
             content: '•';
             position: absolute;
             left: 5px;
-            color: #3498db;
+            color: #4a9eff;
+            font-weight: bold;
         }
         .key-highlight {
-            color: #3498db;
+            color: #4a9eff;
             font-weight: 600;
         }
 
@@ -357,59 +390,6 @@
                                 <div class="feature-key">Endpoint agents for advanced functions</div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="table-section">
-                <table class="comparison-table">
-                    <tr>
-                        <th width="15%">Feature</th>
-                        <th width="30%">Excalibur SAM</th>
-                        <th width="30%">WALLIX</th>
-                        <th width="25%">Why We Win</th>
-                    </tr>
-                    <tr>
-                        <td>Isolation</td>
-                        <td>✅ Visual streaming air gap</td>
-                        <td>⚠️ Proxy-based gateway</td>
-                        <td class="advantage">True zero-trust isolation</td>
-                    </tr>
-                    <tr>
-                        <td>Endpoint Risk</td>
-                        <td>✅ Complete isolation</td>
-                        <td>⚠️ Risks remain</td>
-                        <td class="advantage">Ransomware-proof</td>
-                    </tr>
-                    <tr>
-                        <td>Authentication</td>
-                        <td>✅ Built-in passwordless</td>
-                        <td>⚠️ External MFA</td>
-                        <td class="advantage">Future-ready</td>
-                    </tr>
-                    <tr>
-                        <td>Web Security</td>
-                        <td>✅ Bi-directional RBI-WAF</td>
-                        <td>❌ None</td>
-                        <td class="advantage">Complete protection</td>
-                    </tr>
-                    <tr>
-                        <td>Architecture</td>
-                        <td>✅ Cloud-native Kubernetes</td>
-                        <td>⚠️ Appliance-based</td>
-                        <td class="advantage">Better scaling</td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="footer">
-                <div class="footer-box">
-                    <div class="footer-title">WHY EXCALIBUR WINS</div>
-                    <div class="key-points">
-                        <div class="key-point"><span class="key-highlight">True air gap</span> blocks ransomware</div>
-                        <div class="key-point"><span class="key-highlight">Passwordless</span> eliminates credential theft</div>
-                        <div class="key-point"><span class="key-highlight">RBI-WAF</span> dual-direction protection</div>
-                        <div class="key-point"><span class="key-highlight">Kubernetes</span> cloud-native scaling</div>
                     </div>
                 </div>
             </div>

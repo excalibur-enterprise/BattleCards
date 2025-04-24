@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        body {
+            background-color: #f5f7fa;
+            padding: 20px;
+            color: #333;
+        }
+        .slide {
+            width: 1200px;
+            height: 675px; /* 16:9 aspect ratio */
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background: linear-gradient(to right, #1a5fb4, #3584e4);
+            padding: 20px 25px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            height: 80px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            color: #ffffff;
+        }
+        .header:before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 70%);
+            border-radius: 50%;
+            filter: blur(5px);
+        }
+        .rocket {
+            font-size: 30px;
+            margin-right: 15px;
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.2);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), inset 0 0 15px rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .title {
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .content {
+            display: flex;
+            padding: 15px;
+            flex: 1;
+            min-height: 0;
+            background: #f8f9fa;
+        }
+        .graph-column {
+            flex: 1;
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+        }
+        .explanation-column {
+            flex: 1;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .graph-container {
+            background: #ffffff;
+            border-radius: 8px;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .explanation-title {
+            color: #1a5fb4;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(26, 95, 180, 0.2);
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+        .key-finding {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+            border-left: 3px solid #1a5fb4;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .finding-title {
+            color: #222;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .finding-text {
+            color: #444;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .footer {
+            background: linear-gradient(90deg, #f0f0f0, #f8f9fa);
+            padding: 15px 20px;
+            flex: 0 0 auto;
+            position: relative;
+        }
+        .footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+        }
+        .takeaway-title {
+            color: #1a5fb4;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .takeaway-text {
+            color: #333;
+            font-size: 15px;
+            line-height: 1.4;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <div class="rocket">🚀</div>
+            <div class="title">EXCALIBUR SAM vs. WALLIX - CAPABILITY COMPARISON</div>
+        </div>
+        
+        <div class="content">
+            <div class="graph-column">
+                <div class="graph-container">
+                    <svg viewBox="0 0 800 600" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+                      <!-- Background -->
+                      <rect width="800" height="600" fill="rgba(240, 240, 240, 0.4)" rx="10" ry="10"/>
+                      
+                      <!-- Title -->
+                      <text x="400" y="40" font-family="Arial, sans-serif" font-size="30" font-weight="bold" fill="#333" text-anchor="middle">Competitive Analysis</text>
+                      
+                      <!-- Spider Graph -->
+                      <g transform="translate(400, 320)">
+                        <!-- Background Polygons -->
+                        <polygon points="0,-200 173.2,-100 173.2,100 0,200 -173.2,100 -173.2,-100" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+                        <polygon points="0,-160 138.6,-80 138.6,80 0,160 -138.6,80 -138.6,-80" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+                        <polygon points="0,-120 103.9,-60 103.9,60 0,120 -103.9,60 -103.9,-60" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+                        <polygon points="0,-80 69.3,-40 69.3,40 0,80 -69.3,40 -69.3,-40" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+                        <polygon points="0,-40 34.6,-20 34.6,20 0,40 -34.6,20 -34.6,-20" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+                        
+                        <!-- Axis Lines -->
+                        <line x1="0" y1="0" x2="0" y2="-200" stroke="rgba(0,0,0,0.3)" stroke-width="1"/>
+                        <line x1="0" y1="0" x2="173.2" y2="-100" stroke="rgba(0,0,0,0.3)" stroke-width="1"/>
+                        <line x1="0" y1="0" x2="173.2" y2="100" stroke="rgba(0,0,0,0.3)" stroke-width="1"/>
+                        <line x1="0" y1="0" x2="0" y2="200" stroke="rgba(0,0,0,0.3)" stroke-width="1"/>
+                        <line x1="0" y1="0" x2="-173.2" y2="100" stroke="rgba(0,0,0,0.3)" stroke-width="1"/>
+                        <line x1="0" y1="0" x2="-173.2" y2="-100" stroke="rgba(0,0,0,0.3)" stroke-width="1"/>
+                        
+                        <!-- Axis Labels -->
+                        <text x="0" y="-215" font-family="Arial, sans-serif" font-size="18" fill="#333" text-anchor="middle">Zero-Trust Isolation</text>
+                        <text x="188" y="-100" font-family="Arial, sans-serif" font-size="18" fill="#333" text-anchor="start">Passwordless Auth</text>
+                        <text x="188" y="105" font-family="Arial, sans-serif" font-size="18" fill="#333" text-anchor="start">Bi-directional Protection</text>
+                        <text x="0" y="215" font-family="Arial, sans-serif" font-size="18" fill="#333" text-anchor="middle">Audit Security</text>
+                        <text x="-188" y="105" font-family="Arial, sans-serif" font-size="18" fill="#333" text-anchor="end">Deployment Simplicity</text>
+                        <text x="-188" y="-100" font-family="Arial, sans-serif" font-size="18" fill="#333" text-anchor="end">Cloud Scalability</text>
+                        
+                        <!-- WALLIX Data Polygon -->
+                        <polygon points="0,-110 86.6,-50 51.96,30 0,120 -103.9,60 -86.6,-50" fill="#cd9309" fill-opacity="0.6" stroke="#cd9309" stroke-width="3"/>
+                        
+                        <!-- Excalibur Data Polygon -->
+                        <polygon points="0,-190 155.9,-90 155.9,90 0,170 -155.9,90 -147.2,-85" fill="#1a5fb4" fill-opacity="0.6" stroke="#1a5fb4" stroke-width="2"/>
+                      </g>
+                      
+                      <!-- Legend -->
+                      <rect x="220" y="560" width="360" height="70" rx="5" ry="5" fill="rgba(240,240,240,0.7)"/>
+                      <circle cx="255" cy="595" r="8" fill="#1a5fb4" fill-opacity="0.6" stroke="#1a5fb4" stroke-width="2"/>
+                      <text x="275" y="600" font-family="Arial, sans-serif" font-size="14" fill="#333">Excalibur SAM</text>
+                      <circle cx="500" cy="595" r="8" fill="#cd9309" fill-opacity="0.6" stroke="#cd9309" stroke-width="3"/>
+                      <text x="520" y="600" font-family="Arial, sans-serif" font-size="14" fill="#333">WALLIX</text>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="explanation-column">
+                <div class="explanation-title">KEY COMPETITIVE ADVANTAGES</div>
+                
+                <div class="key-finding">
+                    <div class="finding-title">TRUE ZERO-TRUST ISOLATION</div>
+                    <div class="finding-text">Excalibur's air gap architecture creates complete isolation between endpoints and resources - eliminating the attack path that WALLIX's proxy-based approach cannot close.</div>
+                </div>
+                
+                <div class="key-finding">
+                    <div class="finding-title">COMPREHENSIVE WEB PROTECTION</div>
+                    <div class="finding-text">Excalibur's bi-directional RBI-WAF protects both users and web applications, addressing a critical gap in WALLIX's security model.</div>
+                </div>
+                
+                <div class="key-finding">
+                    <div class="finding-title">PASSWORDLESS AUTHENTICATION</div>
+                    <div class="finding-text">Excalibur's built-in passwordless MFA eliminates credential vulnerabilities and simplifies deployment compared to WALLIX's external MFA dependencies.</div>
+                </div>
+                
+                <div class="key-finding">
+                    <div class="finding-title">MODERN CLOUD ARCHITECTURE</div>
+                    <div class="finding-text">Kubernetes-based deployment provides superior scalability and reduced operational overhead compared to WALLIX's appliance-based approach.</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="takeaway-title" style="text-align: center;">KEY TAKEAWAY</div>
+            <div class="takeaway-text">
+                Excalibur SAM delivers fundamentally stronger security through innovative architecture, addressing critical gaps in WALLIX's approach to secure remote access.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

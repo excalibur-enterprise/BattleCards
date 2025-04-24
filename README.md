@@ -20,7 +20,7 @@ A collection of competitive battle cards for Excalibur SAM, designed to help sal
 | [Slide 2: Battle Guide](https://excalibur-enterprise.github.io/BattleCards/Wallix/slide2-dark.html) | [Slide 2: Battle Guide](https://excalibur-enterprise.github.io/BattleCards/Wallix/slide2-bright.html) |
 | [Slide 3: Capability Comparison](https://excalibur-enterprise.github.io/BattleCards/Wallix/slide3-dark.html) | [Slide 3: Capability Comparison](https://excalibur-enterprise.github.io/BattleCards/Wallix/slide3-bright.html) |
 
-## Usage
+<!-- ## Usage
 
 These battle cards are designed to be used by sales teams when positioning Excalibur SAM against competitors. Each card highlights the key differentiators and competitive advantages of Excalibur SAM.
 
@@ -28,7 +28,7 @@ These battle cards are designed to be used by sales teams when positioning Excal
 
 - **Responsive Design**: All battle cards are designed to work on desktop and tablet devices
 - **Dark/Light Themes**: Choose between dark and light themes based on presentation needs
-- **Slide Formats**: Available in both comprehensive single-page format and slide-by-slide presentation format
+- **Slide Formats**: Available in both comprehensive single-page format and slide-by-slide presentation format -->
 
 ## How to Use
 
@@ -36,7 +36,7 @@ These battle cards are designed to be used by sales teams when positioning Excal
 2. Use in sales meetings, customer presentations, or as reference material
 3. For slide formats, navigate through each slide to build your competitive story
 
-## Contributing
+<!-- ## Contributing
 
 To contribute to these battle cards:
 
@@ -52,7 +52,7 @@ To add a new competitor battle card:
 1. Create a new directory with the competitor name
 2. Use the existing HTML templates as a starting point
 3. Update the content with relevant competitive information
-4. Add links to the new battle cards in this README
+4. Add links to the new battle cards in this README -->
 
 ## Deployment
 

@@ -7,7 +7,15 @@ A collection of competitive battle cards for Excalibur SAM, designed to help sal
 ## Available Battle Cards
 
 ### CyberArk Comparison
-- [Light Theme](https://excalibur-enterprise.github.io/BattleCards/Cyberark/main-bright.html)
+- [Dark Theme - Main Comparison](https://excalibur-enterprise.github.io/BattleCards/Cyberark/main-dark.html)
+- [Light Theme - Main Comparison](https://excalibur-enterprise.github.io/BattleCards/Cyberark/main-bright.html)
+
+#### CyberArk Slides
+| Dark Theme | Light Theme |
+|------------|-------------|
+| [Slide 1: Feature Comparison](https://excalibur-enterprise.github.io/BattleCards/Cyberark/slide1-dark.html) | [Slide 1: Feature Comparison](https://excalibur-enterprise.github.io/BattleCards/Cyberark/slide1-bright.html) |
+| [Slide 2: Battle Guide](https://excalibur-enterprise.github.io/BattleCards/Cyberark/slide2-dark.html) | [Slide 2: Battle Guide](https://excalibur-enterprise.github.io/BattleCards/Cyberark/slide2-bright.html) |
+| [Slide 3: Target Customers & Features](https://excalibur-enterprise.github.io/BattleCards/Cyberark/slide3-dark.html) | [Slide 3: Target Customers & Features](https://excalibur-enterprise.github.io/BattleCards/Cyberark/slide3-bright.html) |
 
 ### Wallix Comparison
 - [Dark Theme - Main Comparison](https://excalibur-enterprise.github.io/BattleCards/Wallix/main-dark.html)

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        body {
+            background-color: #f5f7fa;
+            padding: 20px;
+            color: #333;
+        }
+        .slide {
+            width: 1200px;
+            height: 675px; /* 16:9 aspect ratio */
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background: linear-gradient(to right, #1a5fb4, #3584e4);
+            padding: 20px 25px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            height: 80px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            color: #ffffff;
+        }
+        .header:before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 70%);
+            border-radius: 50%;
+            filter: blur(5px);
+        }
+        .rocket {
+            font-size: 30px;
+            margin-right: 15px;
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.2);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), inset 0 0 15px rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .title {
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .content {
+            flex: 1;
+            display: flex;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        .comparison {
+            display: flex;
+            flex: 1;
+        }
+        .column {
+            flex: 1;
+            padding: 15px;
+        }
+        .excalibur-column {
+            border-right: 1px solid rgba(0, 0, 0, 0.05);
+            background: rgba(26, 95, 180, 0.03);
+        }
+        .cyberark-column {
+            background: rgba(192, 28, 40, 0.02);
+        }
+        .column-header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 22px;
+            font-weight: 600;
+            position: relative;
+        }
+        .column-header:after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 40%;
+            width: 20%;
+            height: 2px;
+        }
+        .excalibur-header {
+            color: #1a5fb4;
+        }
+        .excalibur-header:after {
+            background: #1a5fb4;
+        }
+        .cyberark-header {
+            color: #c01c28;
+        }
+        .cyberark-header:after {
+            background: #c01c28;
+        }
+        .feature-box {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid transparent;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .excalibur-feature {
+            border-left-color: #1a5fb4;
+        }
+        .excalibur-feature:hover {
+            transform: translateX(-5px);
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .cyberark-feature {
+            border-left-color: #c01c28;
+        }
+        .cyberark-feature:hover {
+            transform: translateX(5px);
+            box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .feature-icon {
+            margin-right: 15px;
+            flex-shrink: 0;
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+        .check-icon {
+            color: #26a269;
+        }
+        .warning-icon {
+            color: #cd9309;
+        }
+        .cross-icon {
+            color: #c01c28;
+        }
+        .feature-content {
+            flex: 1;
+        }
+        .feature-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .feature-key {
+            font-size: 14px;
+            color: #444;
+        }
+        .table-section {
+            background: #ffffff;
+            padding: 15px 20px;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+        }
+        .comparison-table th {
+            text-align: left;
+            padding: 12px 15px;
+            background: #1a5fb4;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .comparison-table tr:nth-child(even) {
+            background: rgba(26, 95, 180, 0.05);
+        }
+        .comparison-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            font-size: 14px;
+            color: #333;
+            vertical-align: middle;
+        }
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        .advantage {
+            color: #1a5fb4;
+            font-weight: 600;
+        }
+        .footer {
+            padding: 15px 20px;
+            display: flex;
+            background: linear-gradient(90deg, #f0f0f0, #f8f9fa);
+            position: relative;
+        }
+        .footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+        }
+        .footer-box {
+            flex: 1;
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 0 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .footer-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1a5fb4;
+            text-align: center;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(26, 95, 180, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .key-points {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .key-point {
+            flex-basis: 50%;
+            padding: 5px 5px 5px 15px;
+            position: relative;
+            color: #444;
+            font-size: 14px;
+        }
+        .key-point:before {
+            content: '•';
+            position: absolute;
+            left: 5px;
+            color: #1a5fb4;
+            font-weight: bold;
+        }
+        .key-highlight {
+            color: #1a5fb4;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+            <div class="header">
+                <div class="rocket">🚀</div>
+                <div class="title">EXCALIBUR SAM vs. CYBERARK PAM</div>
+            </div>
+            
+            <div class="content">
+                <div class="comparison">
+                    <div class="column excalibur-column">
+                        <div class="column-header excalibur-header">Excalibur SAM</div>
+                        
+                        <div class="feature-box excalibur-feature">
+                            <div class="feature-icon check-icon">✓</div>
+                            <div class="feature-content">
+                                <div class="feature-title">UNIFIED, SIMPLE PLATFORM</div>
+                                <div class="feature-key">Integrated MFA + PAM + Remote Access</div>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-box excalibur-feature">
+                            <div class="feature-icon check-icon">✓</div>
+                            <div class="feature-content">
+                                <div class="feature-title">TRULY PASSWORDLESS</div>
+                                <div class="feature-key">Built-in biometric MFA + Passkeys</div>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-box excalibur-feature">
+                            <div class="feature-icon check-icon">✓</div>
+                            <div class="feature-content">
+                                <div class="feature-title">SUPERIOR SECURITY & ISOLATION</div>
+                                <div class="feature-key">DOM-streaming RBI with built-in WAF</div>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-box excalibur-feature">
+                            <div class="feature-icon check-icon">✓</div>
+                            <div class="feature-content">
+                                <div class="feature-title">AGENTLESS ARCHITECTURE</div>
+                                <div class="feature-key">Standard HTML5 browsers only</div>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-box excalibur-feature">
+                            <div class="feature-icon check-icon">✓</div>
+                            <div class="feature-content">
+                                <div class="feature-title">SIGNIFICANT COST SAVINGS</div>
+                                <div class="feature-key">Ideal for SMEs & mid-market</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="column cyberark-column">
+                        <div class="column-header cyberark-header">CyberArk PAM</div>
+                        
+                        <div class="feature-box cyberark-feature">
+                            <div class="feature-icon warning-icon">⚠</div>
+                            <div class="feature-content">
+                                <div class="feature-title">COMPLEXITY & RESOURCE INTENSITY</div>
+                                <div class="feature-key">Complex setup, significant admin overhead</div>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-box cyberark-feature">
+                            <div class="feature-icon warning-icon">⚠</div>
+                            <div class="feature-content">
+                                <div class="feature-title">VERY HIGH COST</div>
+                                <div class="feature-key">Premium pricing for large enterprises</div>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-box cyberark-feature">
+                            <div class="feature-icon cross-icon">✗</div>
+                            <div class="feature-content">
+                                <div class="feature-title">USER FRICTION & POOR UX</div>
+                                <div class="feature-key">Complex authentication flows</div>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-box cyberark-feature">
+                            <div class="feature-icon warning-icon">⚠</div>
+                            <div class="feature-content">
+                                <div class="feature-title">LEGACY, VAULT-CENTRIC ARCHITECTURE</div>
+                                <div class="feature-key">Traditional credential checkout model</div>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-box cyberark-feature">
+                            <div class="feature-icon cross-icon">✗</div>
+                            <div class="feature-content">
+                                <div class="feature-title">LIMITED NATIVE ISOLATION</div>
+                                <div class="feature-key">No true RBI/WAF capabilities</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="table-section">
+                <table class="comparison-table">
+                    <tr>
+                        <th width="15%">Feature</th>
+                        <th width="30%">Excalibur (Modern Approach)</th>
+                        <th width="30%">CyberArk (Legacy Approach)</th>
+                        <th width="25%">Why We Win</th>
+                    </tr>
+                    <tr>
+                        <td>Approach</td>
+                        <td>✅ Unified Platform, Passwordless-first</td>
+                        <td>⚠️ Vault-centric, credential checkout</td>
+                        <td class="advantage">Simplicity</td>
+                    </tr>
+                    <tr>
+                        <td>MFA</td>
+                        <td>✅ Built-in, Passwordless</td>
+                        <td>⚠️ Bolt-on/add-on solutions</td>
+                        <td class="advantage">Seamless security</td>
+                    </tr>
+                    <tr>
+                        <td>Web Security</td>
+                        <td>✅ Native DOM-streaming RBI-WAF</td>
+                        <td>❌ No native RBI capabilities</td>
+                        <td class="advantage">Better protection</td>
+                    </tr>
+                    <tr>
+                        <td>Complexity</td>
+                        <td>✅ Low: Fast deployment</td>
+                        <td>❌ High: Complex deployment</td>
+                        <td class="advantage">Easier adoption</td>
+                    </tr>
+                    <tr>
+                        <td>TCO</td>
+                        <td>✅ Lower, more accessible</td>
+                        <td>❌ High, premium pricing</td>
+                        <td class="advantage">Better value</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="footer">
+                <div class="footer-box">
+                    <div class="footer-title">WHY EXCALIBUR WINS</div>
+                    <div class="key-points">
+                        <div class="key-point"><span class="key-highlight">Unified platform</span> simplifies security</div>
+                        <div class="key-point"><span class="key-highlight">Passwordless</span> eliminates credential theft</div>
+                        <div class="key-point"><span class="key-highlight">RBI-WAF</span> dual-direction protection</div>
+                        <div class="key-point"><span class="key-highlight">Agentless</span> reduces complexity</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

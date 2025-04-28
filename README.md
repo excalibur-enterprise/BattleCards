@@ -40,9 +40,8 @@ These battle cards are designed to be used by sales teams when positioning Excal
 
 ## How to Use
 
-1. Click on the links above to open the desired battle card
-2. Use in sales meetings, customer presentations, or as reference material
-3. For slide formats, navigate through each slide to build your competitive story
+1. Click on the links above to open the desired battle card;
+2. For slide formats, navigate through each slide, each containing a subset of the battlecard info.
 
 <!-- ## Contributing
 

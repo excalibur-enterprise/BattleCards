@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en" style="width:100%; height:100%; margin:0; padding:0;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excalibur SAM Battlecards</title>
+    <style>
+        /* Force full width for iframe embedded content */
+        html, body {
+            width: 100% !important;
+            height: auto !important;
+            min-height: 100vh;
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow-x: hidden;
+        }
+
+        /* CSS Variables for Theming */
+        :root {
+            /* Light Theme Colors (Default) */
+            --bg-primary: #f9fafb;
+            --bg-secondary: #ffffff;
+            --text-primary: #111827;
+            --text-secondary: #4b5563;
+            --text-muted: #9ca3af;
+            --accent-primary: #1a56db;
+            --accent-primary-rgb: 26, 86, 219;
+            --accent-primary-light: #3b82f6;
+            --accent-primary-dark: #1e429f;
+            --accent-secondary: #f43f5e;
+            --accent-secondary-rgb: 244, 63, 94;
+            --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --card-shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --border-color: rgba(0, 0, 0, 0.05);
+            --hero-text: #ffffff;
+        }
+
+        /* Dark Theme Colors */
+        html.dark-theme {
+            --bg-primary: #111827;
+            --bg-secondary: #1f2937;
+            --text-primary: #f9fafb;
+            --text-secondary: #e5e7eb;
+            --text-muted: #9ca3af;
+            --accent-primary: #3b82f6;
+            --accent-primary-rgb: 59, 130, 246;
+            --accent-primary-light: #60a5fa;
+            --accent-primary-dark: #2563eb;
+            --accent-secondary: #f87171;
+            --accent-secondary-rgb: 248, 113, 113;
+            --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+            --card-shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.25);
+            --border-color: rgba(255, 255, 255, 0.05);
+            --hero-text: #ffffff;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .page-container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .theme-toggle {
+            background-color: var(--accent-primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--accent-primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .theme-toggle:active {
+            transform: translateY(0);
+        }
+
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-primary-dark) 100%);
+            color: var(--hero-text);
+            padding: 5rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 50px 50px;
+            box-shadow: var(--card-shadow);
+            width: 100%;
+        }
+
+        .hero::before, .hero::after {
+            content: "";
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .hero::before {
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            z-index: 0;
+        }
+
+        .hero::after {
+            bottom: -70px;
+            left: -70px;
+            width: 300px;
+            height: 300px;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin: 0;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-tagline {
+            font-size: 1.3rem;
+            margin-top: 1rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+        }
+
+        /* Main Content */
+        .content {
+            padding: 3rem 1rem;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 4rem;
+            width: 100%;
+        }
+
+        .section-title {
+            position: relative;
+            font-size: 2.5rem;
+            margin-bottom: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-primary-dark);
+            display: inline-block;
+            transition: color 0.3s ease;
+            padding-bottom: 0.75rem;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 5px;
+            background: var(--accent-secondary);
+            border-radius: 2px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Introduction Card */
+        .intro-card {
+            background-color: var(--bg-secondary);
+            padding: 2.5rem;
+            border-radius: 16px;
+            margin-bottom: 3rem;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .intro-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary));
+            border-radius: 4px 0 0 4px;
+            transition: background 0.3s ease;
+        }
+
+        .intro-title {
+            font-size: 1.75rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            color: var(--accent-primary-dark);
+            transition: color 0.3s ease;
+        }
+
+        .intro-card p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        /* How to Use Section */
+        .usage-steps {
+            list-style-type: none;
+            padding: 0;
+            counter-reset: step-counter;
+            width: 100%;
+        }
+
+        .step {
+            position: relative;
+            background-color: var(--bg-secondary);
+            padding: 2rem 2rem 2rem 5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .step::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2.5rem;
+            height: 2.5rem;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-primary-light));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease;
+        }
+
+        .step h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            color: var(--accent-primary-dark);
+            transition: color 0.3s ease;
+        }
+
+        .step p {
+            margin: 0;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        /* Competitor Sections */
+        .competitor-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            width: 100%;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .competitor-logo {
+            width: 4rem;
+            height: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-primary-light));
+            color: white;
+            border-radius: 12px;
+            margin-right: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: background 0.3s ease, transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .competitor-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .competitor-title {
+            font-size: 2.2rem;
+            margin: 0;
+            color: var(--accent-primary-dark);
+            transition: color 0.3s ease;
+            font-weight: 700;
+        }
+
+        /* Card Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        /* Battlecard */
+        .battlecard {
+            background-color: var(--bg-secondary);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            min-height: 360px; /* Ensure consistent height */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .battlecard:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--card-shadow-hover);
+            border-color: var(--accent-primary-light);
+        }
+
+        .battlecard::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .battlecard:hover::before {
+            opacity: 1;
+        }
+
+        .card-image {
+            height: 140px;
+            background: linear-gradient(135deg, var(--accent-primary-light) 0%, var(--accent-primary-dark) 100%);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .battlecard:hover .card-image {
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+        }
+
+        .card-image svg {
+            filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
+            transition: all 0.4s ease;
+            z-index: 2;
+        }
+
+        .battlecard:hover .card-image svg {
+            transform: scale(1.15) rotate(5deg);
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        .card-image::before,
+        .card-image::after {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.5s ease;
+        }
+
+        .card-image::before {
+            width: 100px;
+            height: 100px;
+            bottom: -30px;
+            right: -30px;
+        }
+
+        .battlecard:hover .card-image::before {
+            transform: translate(-10px, 10px);
+            background: rgba(255, 255, 255, 0.15);
+            width: 120px;
+            height: 120px;
+        }
+
+        .card-image::after {
+            width: 150px;
+            height: 150px;
+            top: -50px;
+            left: -50px;
+            opacity: 0.5;
+        }
+
+        .battlecard:hover .card-image::after {
+            transform: translate(10px, -10px);
+            opacity: 0.7;
+            width: 170px;
+            height: 170px;
+        }
+
+        .card-content {
+            padding: 1.75rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .battlecard:hover .card-content::before {
+            opacity: 1;
+        }
+
+        .card-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 1.25rem;
+            color: var(--accent-primary-dark);
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .card-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--accent-secondary);
+            transition: width 0.3s ease;
+        }
+
+        .battlecard:hover .card-title::after {
+            width: 50px;
+        }
+
+        .battlecard:hover .card-title {
+            color: var(--accent-primary);
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin: 0;
+            transition: all 0.3s ease;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+
+        .battlecard:hover .card-description {
+            color: var(--text-primary);
+        }
+
+        .card-actions {
+            padding: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: center;
+            gap: 1.25rem;
+            transition: all 0.3s ease;
+            margin-top: auto;
+            position: relative;
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.02));
+        }
+
+        .battlecard:hover .card-actions {
+            border-top-color: rgba(var(--accent-primary-rgb), 0.2);
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.03));
+        }
+
+        .theme-button {
+            flex: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.25rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            max-width: 120px;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+
+        .theme-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .theme-button:hover::before {
+            transform: translateX(100%);
+        }
+
+        .dark-theme-btn {
+            background-color: #1f2937;
+            color: white;
+        }
+
+        .dark-theme-btn:hover {
+            background-color: #111827;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .light-theme-btn {
+            background-color: #f9fafb;
+            color: #111827;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .light-theme-btn:hover {
+            background-color: #f3f4f6;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            border-color: rgba(0, 0, 0, 0.15);
+        }
+
+        /* Coming Soon Section */
+        .coming-soon {
+            background-color: var(--bg-secondary);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            margin-top: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .coming-soon::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+            transition: background 0.3s ease;
+        }
+
+        .coming-soon h2 {
+            font-size: 1.75rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            color: var(--accent-primary-dark);
+            transition: color 0.3s ease;
+        }
+
+        .coming-soon p {
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            width: 100%;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 1200px) {
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .theme-toggle-container {
+                top: 10px;
+                right: 10px;
+            }
+
+            .theme-toggle {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button class="theme-toggle" id="theme-toggle">
+            <svg id="moon-icon" viewBox="0 0 24 24" style="display: none;">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <svg id="sun-icon" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <span id="theme-toggle-text">Dark Mode</span>
+        </button>
+    </div>
+
+    <div class="page-container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Excalibur SAM Battlecards</h1>
+                <p class="hero-tagline">Empowering sales teams with competitive intelligence to win against key competitors</p>
+            </div>
+        </section>
+
+        <div class="content">
+            <!-- Introduction -->
+            <section class="section">
+                <div class="intro-card">
+                    <h2 class="intro-title">Win More Deals with Strategic Competitive Intelligence</h2>
+                    <p>Welcome to the Excalibur SAM Battlecards portal. Here you'll find comprehensive competitive analysis and sales strategies to effectively position Excalibur SAM against leading competitors in the privileged access management space.</p>
+                    <p>Each battlecard provides detailed feature comparisons, talking points, objection handling, and customer targeting information, all designed to help you showcase Excalibur SAM's unique advantages in competitive sales situations.</p>
+                </div>
+            </section>
+
+            <!-- How to Use Section -->
+            <section class="section">
+                <h2 class="section-title">How to Use Battlecards</h2>
+                <ul class="usage-steps">
+                    <li class="step">
+                        <h3>Select Your Competitor</h3>
+                        <p>Choose from the competitor sections below that matches your sales situation.</p>
+                    </li>
+                    <li class="step">
+                        <h3>Choose Content Format</h3>
+                        <p>Select between the comprehensive main comparison view or individual targeted slides for specific aspects of the competition.</p>
+                    </li>
+                    <li class="step">
+                        <h3>Pick Your Theme</h3>
+                        <p>Select either dark or light theme based on your presentation environment or audience preference.</p>
+                    </li>
+                    <li class="step">
+                        <h3>Apply During Sales Conversations</h3>
+                        <p>Reference the battlecard information during calls, meetings, and presentations to effectively position Excalibur SAM as the superior solution.</p>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- CyberArk Comparison -->
+            <section class="section">
+                <h2 class="section-title">CyberArk Comparison</h2>
+                <div class="competitor-header">
+                    <div class="competitor-logo">CA</div>
+                    <h3 class="competitor-title">Excalibur SAM vs. CyberArk</h3>
+                </div>
+
+                <div class="card-grid">
+                    <!-- Complete Comparison Card -->
+                    <div class="battlecard">
+                        <div class="card-image">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="3" y1="9" x2="21" y2="9"></line>
+                                <line x1="9" y1="21" x2="9" y2="9"></line>
+                            </svg>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Complete Comparison</h3>
+                            <p class="card-description">Comprehensive comparison of all features, capabilities, and competitive advantages of Excalibur SAM vs. CyberArk in a single view.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://excalibur-enterprise.github.io/BattleCards/Cyberark/main-dark.html" target="_blank" class="theme-button dark-theme-btn">Dark Theme</a>
+                            <a href="https://excalibur-enterprise.github.io/BattleCards/Cyberark/main-bright.html" target="_blank" class="theme-button light-theme-btn">Light Theme</a>
+                        </div>
+                    </div>
+
+                    <!-- Feature Comparison Card -->
+                    <div class="battlecard">
+                        <div class="card-image">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 11 12 14 22 4"></polyline>
+                                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                            </svg>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Feature Comparison</h3>
+                            <p class="card-description">Detailed feature-by-feature comparison highlighting Excalibur SAM's technical and functional advantages over CyberArk.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://excalibur-enterprise.github.io/BattleCards/Cyberark/slide1-dark.html" target="_blank" class="theme-button dark-theme-btn">Dark Theme</a>
+                            <a href="https://excalibur-enterprise.github.io/BattleCards/Cyberark/slide1-bright.html" target="_blank" class="theme-button light-theme-btn">Light Theme</a>
+                        </div>
+                    </div>
+
+                    <!-- Battle Guide Card -->
+                    <div class="battlecard">
+                        <div class="card-image">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 20h9"></path>
+                                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                            </svg>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Battle Guide</h3>
+                            <p class="card-description">Strategic talking points, objection handling techniques, and competitive messaging when positioning against CyberArk.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://excalibur-enterprise.github.io/BattleCards/Cyberark/slide2-dark.html" target="_blank" class="theme-button dark-theme-btn">Dark Theme</a>
+                            <a href="https://excalibur-enterprise.github.io/BattleCards/Cyberark/slide2-bright.html" target="_blank" class="theme-button light-theme-btn">Light Theme</a>
+                        </div>
+                    </div>
+
+                    <!-- Target Customers Card -->
+                    <div class="battlecard">
+                        <div class="card-image">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Target Customers & Features</h3>
+                            <p class="card-description">Ideal customer profiles and key features that resonate with organizations currently using or evaluating CyberArk.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://excalibur-enterprise.github.io/BattleCards/Cyberark/slide3-dark.html" target="_blank" class="theme-button dark-theme-btn">Dark Theme</a>
+                            <a href="https://excalibur-enterprise.github.io/BattleCards/Cyberark/slide3-bright.html" target="_blank" class="theme-button light-theme-btn">Light Theme</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Wallix Comparison -->
+            <section class="section">
+                <h2 class="section-title">Wallix Comparison</h2>
+                <div class="competitor-header">
+                    <div class="competitor-logo">W</div>
+                    <h3 class="competitor-title">Excalibur SAM vs. Wallix</h3>
+                </div>
+
+                <div class="card-grid">
+                    <!-- Complete Comparison Card -->
+                    <div class="battlecard">
+                        <div class="card-image">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="3" y1="9" x2="21" y2="9"></line>
+                                <line x1="9" y1="21" x2="9" y2="9"></line>
+                            </svg>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Complete Comparison</h3>
+                            <p class="card-description">Comprehensive comparison of all features, capabilities, and competitive advantages of Excalibur SAM vs. Wallix in a single view.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://excalibur-enterprise.github.io/BattleCards/Wallix/main-dark.html" target="_blank" class="theme-button dark-theme-btn">Dark Theme</a>
+                            <a href="https://excalibur-enterprise.github.io/BattleCards/Wallix/main-bright.html" target="_blank" class="theme-button light-theme-btn">Light Theme</a>
+                        </div>
+                    </div>
+
+                    <!-- Feature Comparison Card -->
+                    <div class="battlecard">
+                        <div class="card-image">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 11 12 14 22 4"></polyline>
+                                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                            </svg>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Feature Comparison</h3>
+                            <p class="card-description">Detailed feature-by-feature comparison highlighting Excalibur SAM's technical and functional advantages over Wallix.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://excalibur-enterprise.github.io/BattleCards/Wallix/slide1-dark.html" target="_blank" class="theme-button dark-theme-btn">Dark Theme</a>
+                            <a href="https://excalibur-enterprise.github.io/BattleCards/Wallix/slide1-bright.html" target="_blank" class="theme-button light-theme-btn">Light Theme</a>
+                        </div>
+                    </div>
+
+                    <!-- Battle Guide Card -->
+                    <div class="battlecard">
+                        <div class="card-image">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 20h9"></path>
+                                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                            </svg>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Battle Guide</h3>
+                            <p class="card-description">Strategic talking points, objection handling techniques, and competitive messaging when positioning against Wallix.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://excalibur-enterprise.github.io/BattleCards/Wallix/slide2-dark.html" target="_blank" class="theme-button dark-theme-btn">Dark Theme</a>
+                            <a href="https://excalibur-enterprise.github.io/BattleCards/Wallix/slide2-bright.html" target="_blank" class="theme-button light-theme-btn">Light Theme</a>
+                        </div>
+                    </div>
+
+                    <!-- Capability Comparison Card -->
+                    <div class="battlecard">
+                        <div class="card-image">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                            </svg>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Capability Comparison</h3>
+                            <p class="card-description">In-depth analysis of capabilities and performance advantages of Excalibur SAM compared to Wallix.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://excalibur-enterprise.github.io/BattleCards/Wallix/slide3-dark.html" target="_blank" class="theme-button dark-theme-btn">Dark Theme</a>
+                            <a href="https://excalibur-enterprise.github.io/BattleCards/Wallix/slide3-bright.html" target="_blank" class="theme-button light-theme-btn">Light Theme</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Coming Soon Section -->
+            <section class="coming-soon">
+                <h2>More Competitor Battlecards Coming Soon</h2>
+                <p>Our competitive intelligence team is constantly expanding our battlecard library. Stay tuned for additional competitor comparisons to help you win more deals.</p>
+                <p>Have a suggestion for our next battlecard? Contact the product marketing team.</p>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2025 Excalibur Enterprise. All rights reserved. For internal use only.</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript for Theme Toggle (No localStorage) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeToggleText = document.getElementById('theme-toggle-text');
+            const sunIcon = document.getElementById('sun-icon');
+            const moonIcon = document.getElementById('moon-icon');
+            const htmlElement = document.documentElement;
+
+            // Toggle theme on button click
+            themeToggle.addEventListener('click', function() {
+                // Toggle dark class on html element
+                htmlElement.classList.toggle('dark-theme');
+
+                // Check if dark mode is now active
+                const isDarkMode = htmlElement.classList.contains('dark-theme');
+
+                // Update button text and icon
+                if (isDarkMode) {
+                    themeToggleText.textContent = 'Light Mode';
+                    sunIcon.style.display = 'none';
+                    moonIcon.style.display = 'block';
+                } else {
+                    themeToggleText.textContent = 'Dark Mode';
+                    sunIcon.style.display = 'block';
+                    moonIcon.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

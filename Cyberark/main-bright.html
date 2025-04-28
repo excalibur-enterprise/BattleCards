@@ -59,6 +59,19 @@
             position: relative;
             z-index: 2;
         }
+        .coming-soon {
+            display: inline-block;
+            background-color: #cd9309;
+            color: #fff;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 2px 5px;
+            border-radius: 3px;
+            margin-left: 5px;
+            vertical-align: middle;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
         .rocket {
             font-size: 32px;
             margin-right: 20px;
@@ -333,7 +346,7 @@
                 <div class="feature excalibur-feature">
                     <div class="feature-title">
                         <span class="feature-icon check-icon">✓</span>
-                        SUPERIOR SECURITY & ISOLATION <span style="color: #ff9900; font-size: 0.8em; font-style: italic;">(Coming Soon)</span>
+                        SUPERIOR SECURITY & ISOLATION <span class="coming-soon">Coming Soon</span>
                     </div>
                     <div class="feature-desc">Innovative DOM-streaming Remote Browser Isolation (RBI) with visually lossless, lag-free sessions.</div>
                     <div class="impact">Zero-trust, bi-directional protection with built-in WAF functionality</div>
@@ -429,7 +442,7 @@
             </tr>
             <tr>
                 <td>Web Access & RBI</td>
-                <td>✅ Native DOM-streaming RBI with WAF</td>
+                <td>✅ Native DOM-streaming RBI with WAF <span class="coming-soon">Coming Soon</span></td>
                 <td>❌ No native RBI, basic web access</td>
                 <td class="win-reason">Better protection</td>
             </tr>

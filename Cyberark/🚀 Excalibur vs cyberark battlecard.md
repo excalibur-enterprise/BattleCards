@@ -2,8 +2,8 @@
 
 #      **Sales Battlecard**
 
-**Elevator Pitch:**  
- *Excalibur delivers secure, unified, passwordless Privileged Access Management (PAM) integrated with Multi-Factor Authentication (MFA) and next-generation Remote Browser Isolation (RBI/WAF) through VITRO technology. Unlike legacy solutions like CyberArk, Excalibur simplifies security management, provides frictionless user experience, and drastically reduces your total cost.*
+**Elevator Pitch:**
+ *Excalibur delivers secure, unified, passwordless Privileged Access Management (PAM) integrated with Multi-Factor Authentication (MFA) and next-generation Remote Browser Isolation (RBI/WAF) through VITRO technology (Coming Soon). Unlike legacy solutions like CyberArk, Excalibur simplifies security management, provides frictionless user experience, and drastically reduces your total cost.*
 
 ---
 
@@ -21,7 +21,7 @@
 
 ### **✅ 1\. Unified, Simple Platform**
 
-* Integrated **MFA \+ PAM \+ Remote Access (RBI/WAF)** in one easy-to-manage platform.
+* Integrated **MFA \+ PAM \+ Remote Access (RBI/WAF)** *(Coming Soon)* in one easy-to-manage platform.
 
 * No complex integrations, multiple agents, or modules.
 
@@ -37,7 +37,7 @@
 
 ### **🔐 3\. Superior Security & Isolation (VITRO Technology)**
 
-* Innovative **DOM-streaming Remote Browser Isolation (RBI)** provides:
+* Innovative **DOM-streaming Remote Browser Isolation (RBI)** *(Coming Soon)* provides:
 
   * Visually lossless, lag-free sessions.
 
@@ -75,7 +75,7 @@
 | **Very High Cost** | Cost-effective licensing, affordable for SMEs |
 | **Potential User Friction & Poor UX** | Seamless, intuitive UX with no productivity loss |
 | **Legacy, Vault-Centric Architecture** | Modern, streamlined architecture built for the cloud |
-| **Limited Native Isolation (No true RBI/WAF)** | Built-in, bi-directional RBI/WAF with zero-day protection |
+| **Limited Native Isolation (No true RBI/WAF)** | Built-in, bi-directional RBI/WAF with zero-day protection *(Coming Soon)* |
 
 ---
 
@@ -95,7 +95,7 @@
 
 ## **💡 Positioning Statement**
 
-“Excalibur delivers robust Privileged Access Management and seamless passwordless MFA in a unified, intuitive platform. Unlike CyberArk’s costly, complex legacy architecture, Excalibur simplifies security with built-in session isolation (VITRO RBI/WAF), ideal for mid-market and public organizations looking for powerful, accessible PAM security.”
+"Excalibur delivers robust Privileged Access Management and seamless passwordless MFA in a unified, intuitive platform. Unlike CyberArk's costly, complex legacy architecture, Excalibur simplifies security with built-in session isolation through VITRO RBI/WAF (Coming Soon), ideal for mid-market and public organizations looking for powerful, accessible PAM security."
 
 ---
 
@@ -131,5 +131,5 @@
 
 ## **📌 Bottom Line (Quick Summary for Sales Calls):**
 
-Excalibur provides a modern, passwordless PAM & MFA experience through a simple, cost-effective, and agentless platform, strengthened by innovative bi-directional RBI/WAF isolation (VITRO). CyberArk is powerful but complex, costly, and traditional. Excalibur is the smarter choice for organizations prioritizing simplicity, security, user experience, and lower TCO.
+Excalibur provides a modern, passwordless PAM & MFA experience through a simple, cost-effective, and agentless platform, strengthened by innovative bi-directional RBI/WAF isolation (VITRO) *(Coming Soon)*. CyberArk is powerful but complex, costly, and traditional. Excalibur is the smarter choice for organizations prioritizing simplicity, security, user experience, and lower TCO.
 
